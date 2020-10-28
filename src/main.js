@@ -27,6 +27,11 @@ let config = {
         preload: preload,
         create: create,
         update: update
+    },
+    scale:{
+        zoom:2,
+        mode: Phaser.Scale.ScaleModes.FIT,
+        autoCenter: Phaser.Scale.Center.CENTER_BOTH
     }
 
 };
