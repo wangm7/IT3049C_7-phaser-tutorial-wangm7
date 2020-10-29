@@ -1,0 +1,9 @@
+Scenes:
+    - Boot: Load Assets
+    - Tittle: title, play button
+    - Game: main logic
+    - Ui: display current gold count 
+
+Classes: 
+    - Player: player game object 
+    - Button： 
