@@ -21,13 +21,13 @@ function collectStar (player, star){
 
     score += 10;
     scoreText.setText('Score: ' + score);
+ 
 
     if (stars.countActive(true) === 0)
     {
         stars.children.iterate(function (child) {
 
             child.enableBody(true, child.x, 0, true, true);
-
         });
 
         let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
@@ -57,7 +57,7 @@ function hitBomb (player, bomb){
     if(gameOver){
         this.tittle_text = this.add.text(this.scale.width/2, this.scale.height/2, 'Game Over!', { fontSize: '40px', fill: '#000' });
         this.tittle_text.setOrigin(0.5);
-        this.sound = this.sound.add('themMusic').pause;
+        //this.sound = this.sound.add('themMusic');
         //Restart.setText("Restart");
         this.restartGameButton = new UiButton(
             this, 
@@ -96,7 +96,8 @@ class GameScene extends Phaser.Scene{
         //background 
         let bg = this.add.image(0, 0, 'sky');
         bg.setOrigin(0, 0);
-    
+        //sound 
+        let ding = this.sound.add('ding');
     ////////////////////////////////////
         //floor
         let platforms;
@@ -145,11 +146,15 @@ class GameScene extends Phaser.Scene{
         stars.children.iterate(function (child) {
             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
         });
+
+        ding.play();
+
     
         //collision against the platforms.
         this.physics.add.collider(stars, platforms);
         //player overlaps with a star or not
         this.physics.add.overlap(player, stars, collectStar, null, this);
+        
     ////////////////////////////////////
     
     ////////////////////////////////////////

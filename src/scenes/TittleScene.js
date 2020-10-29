@@ -9,6 +9,9 @@ class TittleScene extends Phaser.Scene{
     create(){
         //image bg
         let background = this.add.sprite(0, 0, 'tittle_image').setOrigin(0,0);
+        //bg music
+        this.sound = this.sound.add('themMusic', {loop: true})
+        this.sound.play();
         
         //text tittle
         const text = 'IT3049C002 the Week 1 tutorial';
@@ -28,7 +31,8 @@ class TittleScene extends Phaser.Scene{
         this.tittle_text.setOrigin(0.5);
 
 
-        this.sound = this.sound.add('themMusic').play();
+    
+        
 
         //create paly_btn
         this.startGameButton = new UiButton(
@@ -46,4 +50,5 @@ class TittleScene extends Phaser.Scene{
     startScene(targetScene) {
         this.scene.start(targetScene);
       }
+
 }
